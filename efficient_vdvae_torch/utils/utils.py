@@ -22,7 +22,7 @@ def transpose_dicts(dct):
 
 
 def get_variate_masks(stats):
-    thresh = np.quantile(stats, 1 - hparams.synthesis.variates_masks_quantile)
+    thresh = np.quantile(stats, 1 - hparams.synthesis.variate_masks_quantile)
     return stats > thresh
 
 
