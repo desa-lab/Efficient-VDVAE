@@ -66,6 +66,8 @@ def count_parameters(model):
 
 def assert_CUDA_and_hparams_gpus_are_equal():
     print('Running on: ', torch.cuda.device_count(), ' GPUs')
+    print(hparams.run.num_gpus)
+    print(torch.cuda.device_count())
     assert hparams.run.num_gpus == torch.cuda.device_count()
 
 

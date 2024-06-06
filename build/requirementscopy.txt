@@ -1,0 +1,17 @@
+audioread
+ffmpeg
+inflect
+ipywidgets
+librosa
+matplotlib
+numpy
+opencv-python
+pandas
+Pillow
+protobuf
+scikit-image
+scikit-learn
+tqdm
+Unidecode
+tensorflow_probability
+torch_optimizer

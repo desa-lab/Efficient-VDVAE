@@ -157,24 +157,45 @@ We recommend running all the code below inside a `Linux screen` or any other ter
   
 To create the docker image used in both the Pytorch and JAX implementations:  
   
-```  
-cd build  
+### Instructions for ImageNet64 dataset
+```
+cd build
+
+pip install --upgrade git+https://github.com/Rayhane-mamah/hparams
+
+pip install -r requirements.txt
+
+wget https://image-net.org/data/downsample/Imagenet64_train_part1_npz.zip
+
+wget https://image-net.org/data/downsample/Imagenet64_train_part2_npz.zip
+
+wget https://image-net.org/data/downsample/Imagenet64_val_npz.zip
+
 docker build -t efficient_vdvae_image .  
 ```  
-
-### Note:
-- If using JAX library on ampere architecture GPUs, it's possible to face a random GPU hanging problem when training on multiple GPUs 
-([issue](https://github.com/google/jax/issues/8475)). In that case, we provide an 
-[alternative docker image](https://github.com/Rayhane-mamah/Efficient-VDVAE/blob/main/build/ampere_Dockerfile) with an older version of JAX to bypass the issue until a solution is 
-found. 
 
 All code executions should be done within a docker container. To start the docker container, we provide a utility script:  
   
 ```  
 sh docker_run.sh  # Starts the container and attaches terminal
-cd /workspace/Efficient-VDVAE  # Inside docker container
 ```  
-## Setup datasets  
+
+### Setup ImageNet64:
+Move the three zip files
+```
+Imagenet64_train_part1_npz.zip
+Imagenet64_train_part2_npz.zip
+Imagenet64_val_npz.zip
+```
+to ```/workspace/Efficient-VDVAE/dataset_dumps```
+
+Then run
+```
+cd /workspace/Efficient-VDVAE/data_scripts
+sh download_and_preprocess.sh
+```
+
+## Setup other datasets (does not work)
   
 All datasets can be automatically downloaded and pre-processed from the convenience script we provide:
 
@@ -188,6 +209,8 @@ sh download_and_preprocess.sh <dataset_name>
 - For the `celeba` dataset, a manual download of `img_align_celeba.zip` and  `list_eval_partition.txt` files is necessary. Both files should be placed under `<project_path>/dataset_dumps/`.
 - `img_align_celeba.zip` download [link](https://drive.google.com/file/d/0B7EVK8r0v71pZjFTYXZWM3FlRnM/view?usp=sharing&resourcekey=0-dYn9z10tMJOBAkviAcfdyQ).
 - `list_eval_partition.txt` download [link](https://drive.google.com/file/d/0B7EVK8r0v71pY0NSMzRuSXJEVkk/view?usp=sharing&resourcekey=0-i4TGCi_51OtQ5K9FSp4EDg).
+
+# Everything else below here works
   
 ## Setting the hyper-parameters  
   

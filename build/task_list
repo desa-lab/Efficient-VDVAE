@@ -1,0 +1,13 @@
+
+wget https://image-net.org/data/downsample/Imagenet64_train_part1_npz.zip -P ../dataset_dumps
+
+
+wget https://image-net.org/data/downsample/Imagenet64_train_part2_npz.zip -P ../dataset_dumps
+
+  fi
+
+  if [ ! -f ../dataset_dumps/Imagenet64_val_npz.zip ]; then
+    echo "downloading imagenet64 validation data"
+    wget https://image-net.org/data/downsample/Imagenet64_val_npz.zip -P ../dataset_dumps
+
+  fi

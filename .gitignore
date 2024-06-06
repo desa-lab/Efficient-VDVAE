@@ -60,6 +60,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
+
 # Flask stuff:
 instance/
 .webassets-cache
@@ -143,3 +144,12 @@ cython_debug/
 
 
 
+efficient_vdvae_torch/checkpoints-imagnet_64_baseline
+
+
+datasets/
+
+
+dataset_dumps
+
+efficient_vdvae_torch/logs-imagnet_64_baseline/
