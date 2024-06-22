@@ -1,3 +1,5 @@
+build/Imagenet64_val_npz.zip
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

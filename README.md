@@ -20,6 +20,12 @@
 </p>  
   
 ## Pre-trained model checkpoints  
+
+```bash
+wget https://storage.googleapis.com/dessa-public-files/efficient_vdvae/Pytorch/imagenet64_baseline_checkpoints.zip
+unzip imagenet64_baseline_checkpoints.zip -d efficient_vdvae_torch
+rm imagenet64_baseline_checkpoints.zip
+```
   
 We provide checkpoints of pre-trained models on MNIST, CIFAR-10, Imagenet 32x32, Imagenet 64x64, CelebA 64x64, CelebAHQ 256x256 (5-bits and 8-bits), FFHQ 256x256 (5-bits and 8bits), CelebAHQ 1024x1024 and FFHQ 1024x1024 in the links in the table below. All provided models are the ones trained for table 4 of the [paper](https://arxiv.org/abs/2203.13751).
 
@@ -152,6 +158,18 @@ We recommend running all the code below inside a `Linux screen` or any other ter
 
 - If you're planning on running the JAX implementation, the installed JAX must use exactly the same CUDA and Cudnn versions installed. Our default [Dockerfile](https://github.com/Rayhane-mamah/Efficient-VDVAE/blob/main/build/Dockerfile) assumes the code will run with CUDA 11.4 or newer and should be changed otherwise. For more details, refer to [JAX
  installation](https://github.com/google/jax#installation).
+
+## Create Environment
++ For mac and linux:
+```
+virtualenv pyenv --python=3.10.12
+source pyenv/bin/activate
+```
++ For Windows:
+```
+virtualenv pyenv --python=3.10.12
+pyenv\Scripts\activate
+```
 
 ## Installation  
   
@@ -303,6 +321,7 @@ cd efficient_vdvae_torch  # or cd efficient_vdvae_jax
 # Set the inference mode in "logs-<run.name>/hparams-<run.name>.cfg"  
 # Set the same <run.name> in "hparams.cfg"  
 python synthesize.py  
+CUDA_VISIBLE_DEVICES=7 python synthesize.py  
 ```  
   
 ### Notes:  
